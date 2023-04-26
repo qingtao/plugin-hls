@@ -46,3 +46,7 @@ require (
 	golang.org/x/tools v0.3.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace (
+	m7s.live/engine/v4 v4.12.0 => github.com/qingtao/engine v4.1.0
+)

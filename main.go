@@ -26,7 +26,7 @@ import (
 	"m7s.live/engine/v4/util"
 )
 
-//go:embed default.ts
+// go:embed default.ts
 var defaultTS []byte
 var defaultSeq = 0 // 默认片头的全局序号
 var writing = make(map[string]*HLSWriter)
@@ -164,8 +164,7 @@ func (config *HLSConfig) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 #EXT-X-TARGETDURATION:%d
 #EXT-X-DISCONTINUITY-SEQUENCE:%d
 #EXT-X-DISCONTINUITY
-#EXTINF:%.3f,
-default.ts`, defaultSeq, int(math.Ceil(config.DefaultTSDuration.Seconds())), defaultSeq, config.DefaultTSDuration.Seconds())))
+#EXTINF:%.3f`, defaultSeq, int(math.Ceil(config.DefaultTSDuration.Seconds())), defaultSeq, config.DefaultTSDuration.Seconds())))
 	} else if strings.HasSuffix(r.URL.Path, ".ts") {
 		w.Header().Add("Content-Type", "video/mp2t") //video/mp2t
 		if tsData, ok := memoryTs.Load(fileName); ok {
